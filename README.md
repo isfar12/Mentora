@@ -11,18 +11,16 @@
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Architecture](#architecture)
-- [Installation](#installation)
-- [Usage](#usage)
-- [File Structure](#file-structure)
-- [Database Schema](#database-schema)
-- [API Endpoints](#api-endpoints)
-- [Configuration](#configuration)
-- [Development](#development)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Architecture](#️-architecture)
+- [Installation](#️-installation)
+- [Usage](#-usage)
+- [File Structure](#-file-structure)
+- [Database Schema](#️-database-schema)
+- [Configuration](#-configuration)
+- [Development](#-development)
+- [Contributing](#-contributing)
 
 ---
 
@@ -376,7 +374,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact & Support
 
 - **Developer**: Zubayer Isfar Zeem
-- **Email**: [your.email@example.com]
+- **Email**: [isfarjubayer@gmail.com]()
 - **GitHub**: [https://github.com/isfar12](https://github.com/isfar12)
 - **Issues**: [Project Issues](https://github.com/isfar12/mentora/issues)
 
