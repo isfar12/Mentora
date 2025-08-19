@@ -1,0 +1,187 @@
+-- Create a new database for the university
+CREATE DATABASE UniversityDB;
+
+-- Switch to the newly created database
+USE UniversityDB;
+
+-- Create the table for the 2021 session
+CREATE TABLE session_2021 (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(100),
+    student_cgpa DECIMAL(3,2),
+    student_hall_allotment VARCHAR(100)
+);
+
+-- Create the table for the 2022 session
+CREATE TABLE session_2022 (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(100),
+    student_cgpa DECIMAL(3,2),
+    student_hall_allotment VARCHAR(100)
+);
+
+-- Create the table for the 2023 session
+CREATE TABLE session_2023 (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(100),
+    student_cgpa DECIMAL(3,2),
+    student_hall_allotment VARCHAR(100)
+);
+
+-- Select the database
+USE UniversityDB;
+
+-- Insert data into the session_2021 table
+INSERT INTO session_2021 (student_id, student_name, student_cgpa, student_hall_allotment) VALUES
+(1, 'John Doe', 3.45, 'Hall A'),
+(2, 'Jane Smith', 3.60, 'Hall B'),
+(3, 'Alex Johnson', 3.72, 'Hall C'),
+(4, 'Emily Davis', 3.65, 'Hall A'),
+(5, 'Michael Brown', 3.50, 'Hall D'),
+(6, 'Sarah Wilson', 3.80, 'Hall B'),
+(7, 'David Lee', 3.40, 'Hall C'),
+(8, 'Sophia Clark', 3.55, 'Hall D'),
+(9, 'Chris Walker', 3.60, 'Hall A'),
+(10, 'Megan King', 3.70, 'Hall B'),
+(11, 'Brian Scott', 3.45, 'Hall C'),
+(12, 'Laura Adams', 3.85, 'Hall D'),
+(13, 'Kevin Lewis', 3.50, 'Hall A'),
+(14, 'Olivia Hall', 3.65, 'Hall B'),
+(15, 'Daniel Martinez', 3.75, 'Hall C'),
+(16, 'Isabella Young', 3.60, 'Hall D'),
+(17, 'James Hernandez', 3.40, 'Hall A'),
+(18, 'Charlotte Allen', 3.50, 'Hall B'),
+(19, 'William Perez', 3.65, 'Hall C'),
+(20, 'Amelia Roberts', 3.80, 'Hall D');
+
+-- Use your database
+USE UniversityDB;
+
+-- 1) Table: CSE session results (2010-2019), pass/fail + topper flag
+DROP TABLE IF EXISTS cse_session_results;
+CREATE TABLE cse_session_results (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  session_name VARCHAR(20) NOT NULL,            -- e.g., 'session_2019'
+  student_id INT NOT NULL,
+  student_name VARCHAR(100) NOT NULL,
+  student_cgpa DECIMAL(3,2) NOT NULL,           -- 0.00 - 4.00
+  result ENUM('PASS','FAIL') NOT NULL,
+  is_topper TINYINT(1) NOT NULL DEFAULT 0,      -- 1 = highest CGPA in that session
+  CONSTRAINT uq_session_student UNIQUE (session_name, student_id)
+);
+
+-- 2) Synthetic data (2010..2019). 6 students per session; exactly one topper (is_topper=1).
+-- session_2010
+INSERT INTO cse_session_results (session_name, student_id, student_name, student_cgpa, result, is_topper) VALUES
+('session_2010', 1001, 'Arif Hasan',        3.65, 'PASS', 0),
+('session_2010', 1002, 'Nadia Rahman',      3.78, 'PASS', 0),
+('session_2010', 1003, 'Samiul Karim',      2.20, 'FAIL', 0),
+('session_2010', 1004, 'Priya Sarker',      3.90, 'PASS', 1), -- topper
+('session_2010', 1005, 'Farhan Ahmed',      3.10, 'PASS', 0),
+('session_2010', 1006, 'Mithila Chowdhury', 2.80, 'FAIL', 0);
+
+-- session_2011
+INSERT INTO cse_session_results (session_name, student_id, student_name, student_cgpa, result, is_topper) VALUES
+('session_2011', 1101, 'Tanvir Alam',       3.55, 'PASS', 0),
+('session_2011', 1102, 'Shaila Nahar',      3.70, 'PASS', 0),
+('session_2011', 1103, 'Zahid Hossain',     2.15, 'FAIL', 0),
+('session_2011', 1104, 'Anika Rahim',       3.93, 'PASS', 1), -- topper
+('session_2011', 1105, 'Sajid Mahmud',      3.05, 'PASS', 0),
+('session_2011', 1106, 'Lamia Islam',       2.70, 'FAIL', 0);
+
+-- session_2012
+INSERT INTO cse_session_results (session_name, student_id, student_name, student_cgpa, result, is_topper) VALUES
+('session_2012', 1201, 'Fahim Reza',        3.62, 'PASS', 0),
+('session_2012', 1202, 'Nusrat Jahan',      3.74, 'PASS', 0),
+('session_2012', 1203, 'Rasel Kabir',       2.30, 'FAIL', 0),
+('session_2012', 1204, 'Tahsin Anwar',      3.95, 'PASS', 1), -- topper
+('session_2012', 1205, 'Bushra Khan',       3.20, 'PASS', 0),
+('session_2012', 1206, 'Rafiul Islam',      2.65, 'FAIL', 0);
+
+-- session_2013
+INSERT INTO cse_session_results (session_name, student_id, student_name, student_cgpa, result, is_topper) VALUES
+('session_2013', 1301, 'Imran Hadi',        3.58, 'PASS', 0),
+('session_2013', 1302, 'Sumaiya Akter',     3.72, 'PASS', 0),
+('session_2013', 1303, 'Joy Barua',         2.05, 'FAIL', 0),
+('session_2013', 1304, 'Tasmia Rahman',     3.91, 'PASS', 1), -- topper
+('session_2013', 1305, 'Shahriar Tanin',    3.18, 'PASS', 0),
+('session_2013', 1306, 'Afia Haque',        2.75, 'FAIL', 0);
+
+-- session_2014
+INSERT INTO cse_session_results (session_name, student_id, student_name, student_cgpa, result, is_topper) VALUES
+('session_2014', 1401, 'Naeem Uddin',       3.61, 'PASS', 0),
+('session_2014', 1402, 'Maliha Chowdhury',  3.77, 'PASS', 0),
+('session_2014', 1403, 'Jisan Rahman',      2.25, 'FAIL', 0),
+('session_2014', 1404, 'Ridita Sultana',    3.94, 'PASS', 1), -- topper
+('session_2014', 1405, 'Omar Faruk',        3.12, 'PASS', 0),
+('session_2014', 1406, 'Shorna Das',        2.68, 'FAIL', 0);
+
+-- session_2015
+INSERT INTO cse_session_results (session_name, student_id, student_name, student_cgpa, result, is_topper) VALUES
+('session_2015', 1501, 'Arman Ali',         3.59, 'PASS', 0),
+('session_2015', 1502, 'Mahira Khan',       3.71, 'PASS', 0),
+('session_2015', 1503, 'Nabil Hassan',      2.18, 'FAIL', 0),
+('session_2015', 1504, 'Riyana Tahsin',     3.97, 'PASS', 1), -- topper
+('session_2015', 1505, 'Sakib Rahman',      3.16, 'PASS', 0),
+('session_2015', 1506, 'Ishrat Jahan',      2.72, 'FAIL', 0);
+
+-- session_2016
+INSERT INTO cse_session_results (session_name, student_id, student_name, student_cgpa, result, is_topper) VALUES
+('session_2016', 1601, 'Towhid Karim',      3.63, 'PASS', 0),
+('session_2016', 1602, 'Orin Tasnim',       3.76, 'PASS', 0),
+('session_2016', 1603, 'Rifat Hossain',     2.22, 'FAIL', 0),
+('session_2016', 1604, 'Meher Afroz',       3.92, 'PASS', 1), -- topper
+('session_2016', 1605, 'Tariq Aziz',        3.14, 'PASS', 0),
+('session_2016', 1606, 'Keya Saha',         2.69, 'FAIL', 0);
+
+-- session_2017
+INSERT INTO cse_session_results (session_name, student_id, student_name, student_cgpa, result, is_topper) VALUES
+('session_2017', 1701, 'Ridwan Islam',      3.57, 'PASS', 0),
+('session_2017', 1702, 'Puja Rani',         3.73, 'PASS', 0),
+('session_2017', 1703, 'Hasibul Arefin',    2.12, 'FAIL', 0),
+('session_2017', 1704, 'Nabila Zaman',      3.96, 'PASS', 1), -- topper
+('session_2017', 1705, 'Monirul Islam',     3.19, 'PASS', 0),
+('session_2017', 1706, 'Afsana Mimi',       2.71, 'FAIL', 0);
+
+-- session_2018
+INSERT INTO cse_session_results (session_name, student_id, student_name, student_cgpa, result, is_topper) VALUES
+('session_2018', 1801, 'Raihan Kabir',      3.64, 'PASS', 0),
+('session_2018', 1802, 'Sadia Afrin',       3.79, 'PASS', 0),
+('session_2018', 1803, 'Roni Sarker',       2.08, 'FAIL', 0),
+('session_2018', 1804, 'Jannat Ara',        3.98, 'PASS', 1), -- topper
+('session_2018', 1805, 'Foysal Ahmed',      3.11, 'PASS', 0),
+('session_2018', 1806, 'Mim Khatun',        2.66, 'FAIL', 0);
+
+-- session_2019
+INSERT INTO cse_session_results (session_name, student_id, student_name, student_cgpa, result, is_topper) VALUES
+('session_2019', 1901, 'Shahriar Kabbo',    3.60, 'PASS', 0),
+('session_2019', 1902, 'Tasfia Anjum',      3.75, 'PASS', 0),
+('session_2019', 1903, 'Mahin Rahat',       2.10, 'FAIL', 0),
+('session_2019', 1904, 'Rumana Akter',      3.99, 'PASS', 1), -- topper
+('session_2019', 1905, 'Ovi Chowdhury',     3.13, 'PASS', 0),
+('session_2019', 1906, 'Sanjida Islam',     2.73, 'FAIL', 0);
+
+-- 3) Optional helpful indexes
+CREATE INDEX idx_cse_session_name ON cse_session_results (session_name);
+CREATE INDEX idx_cse_result ON cse_session_results (result);
+CREATE INDEX idx_cse_cgpa ON cse_session_results (student_cgpa);
+
+-- 4) Table: Semester fee catalog (10 categories)
+DROP TABLE IF EXISTS semester_fee_catalog;
+CREATE TABLE semester_fee_catalog (
+  fee_id INT AUTO_INCREMENT PRIMARY KEY,
+  category VARCHAR(100) NOT NULL UNIQUE,
+  amount DECIMAL(10,2) NOT NULL CHECK (amount >= 0)
+);
+
+INSERT INTO semester_fee_catalog (category, amount) VALUES
+('Course Fee',            35000.00),
+('Lab Fee',                5000.00),
+('Library Fee',            1200.00),
+('Service Charge',         1500.00),
+('IT/Network Fee',         2000.00),
+('Exam Fee',               2500.00),
+('Student Activity Fee',   1000.00),
+('Health/Medical Fee',     800.00),
+('Sports Fee',             700.00),
+('Development Fee',        6000.00);

@@ -1,0 +1,11 @@
+e:\Mentora\Files\CCE\Computer_Communication_2.docx
+e:\Mentora\Files\CCE\Digital Transmission.pdf
+e:\Mentora\Files\CCE\Introduction to Physical Layer.pdf
+e:\Mentora\Files\CCE\Introduction_to_Data_Communication_and_Engineering.pdf
+e:\Mentora\Files\CCE\Network Models and Protocol Suites.pdf
+e:\Mentora\Files\EEE\Arduino_Basics.docx
+e:\Mentora\Files\EEE\ESP32_ESP8266_Guide.docx
+e:\Mentora\Files\EEE\Transformer_0.pdf
+e:\Mentora\Files\EEE\Transformer_1.pdf
+e:\Mentora\Files\EEE\Transformer_2.pdf
+e:\Mentora\Files\EEE\Transformer_3.pdf
