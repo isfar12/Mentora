@@ -82,7 +82,7 @@ def main():
     # Display current mode with styling
     mode_color = {"General": "🧠", "Query": "🗄️", "RAG": "📚"}
     st.markdown(f"""
-    <div style="text-align: center; padding: 0.5rem; background-color: #f0f2f6; border-radius: 5px; margin: 1rem 0;">
+    <div style="text-align: center; padding: 0.5rem; background-color: #4842f5; border-radius: 5px; margin: 1rem 0;">
         <h3 style="margin: 0;">{mode_color[st.session_state.current_mode]} Current Mode: {st.session_state.current_mode}</h3>
     </div>
     """, unsafe_allow_html=True)
