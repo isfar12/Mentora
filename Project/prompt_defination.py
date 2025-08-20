@@ -14,10 +14,7 @@ from vector_store import load_retriever
 general_prompt=PromptTemplate(
     template='''You are a helpful assistant. Answer the question: {question} in brief. If you do not have answer, say I don't know.
                 Here is an example:
-                User: What is the capital of France?
-                Assistant: The capital of France is Paris.
-                User: When was the GPT-5 released?
-                Assistant: I don't have the knowledge about the query.''',
+               ''',
     input_variables=["question"]
 )
 
